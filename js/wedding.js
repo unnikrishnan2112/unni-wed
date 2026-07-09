@@ -173,17 +173,21 @@ setInterval(updateCountdown, 1000);
     // ── Start music SYNCHRONOUSLY during user gesture ──────────
     // bgMusic.play() must be called within the touchend/mouseup
     // event handler — any setTimeout breaks the autoplay policy.
-    if (bgMusic && !musicStarted) {
-      bgMusic.volume = 0;
-      bgMusic.play().then(() => {
-        musicStarted = true;
-        musicMuted   = false;
-        updateMusicUI();
-        fadeVolume(0, 0.55, 2000);
-      }).catch(() => {
-        // Autoplay blocked — user can tap the music pill to start
-      });
-    }
+if (bgMusic && !musicStarted) {
+  bgMusic.muted = false;
+  bgMusic.volume = 0.01; // IMPORTANT: not 0
+
+  bgMusic.play().then(() => {
+    musicStarted = true;
+    musicMuted   = false;
+    updateMusicUI();
+
+    // Smooth fade
+    fadeVolume(0.01, 0.55, 2000);
+  }).catch(() => {
+    console.log('Autoplay blocked');
+  });
+}
 
     // Page reveal can safely be deferred (it's UI only)
     setTimeout(revealDetails, 700);
@@ -255,7 +259,7 @@ function toggleMusic() {
   if (!musicStarted) {
     // Audio hasn't started yet (swipe not done / autoplay blocked)
     // This click IS a user gesture so play() will work here
-    bgMusic.volume = 0;
+    bgMusic.volume = 0.01;
     bgMusic.play().then(() => {
       musicStarted = true;
       musicMuted   = false;
