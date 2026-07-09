@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#f5c6e8" />
+  <title>Unnikrishnan &amp; Aparna | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comforter&family=Poppins:wght@300;400;500;600&family=Sora:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/wedding.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       PAGE 1 — SPLASH / HERO
+  ═══════════════════════════════════════ -->
+  <section id="splash" class="page">
+
+    <div class="splash-bg">
+      <img src="assets/unni.jpg" alt="" aria-hidden="true" class="splash-bg-img" />
+      <div class="splash-overlay"></div>
+    </div>
+
+    <!-- Music pill (top-right) -->
+    <button class="music-pill" id="musicPill" aria-label="Play Sita Kalyanam">
+      <span class="music-pill-label">Sita Kalynam</span>
+      <span class="music-pill-btn">
+        <i data-lucide="music-2" class="mp-icon icon-play" width="12" height="12"></i>
+        <i data-lucide="pause" class="mp-icon icon-pause" width="12" height="12"></i>
+      </span>
+    </button>
+
+    <!-- Bismillah calligraphy — Figma y=80, w=104 -->
+    <div class="bismillah splash-enter" style="--delay:0.15s">
+      <img src="assets/ganesh.svg" alt="Ganesh" class="bismillah-img" />
+    </div>
+
+    <!-- Malayalam title logo — Figma y=119, w=224, h=116 -->
+    <div class="splash-title-logo splash-enter" style="--delay:0.3s">
+      <img src="assets/malayalam-logo.svg" alt="" class="splash-title-img" />
+    </div>
+
+    <!-- Invite text — Figma y=268, Poppins 12px -->
+    <p class="splash-invite splash-enter" style="--delay:0.4s">
+      We cordially invite You to honor us with Your presence at the blessed occasion of our wedding
+    </p>
+
+    <!-- Groom name — Figma y=314, Astonia Regular ~40px -->
+    <div class="splash-groom splash-enter" style="--delay:0.5s">
+      <span>Unnikrishan P S</span>
+    </div>
+
+    <!-- "weds" badge — Figma y≈381, Comforter on pink bar -->
+    <div class="splash-weds-wrap splash-enter" style="--delay:0.6s">
+      <div class="splash-weds-bar"></div>
+      <span class="splash-weds">weds</span>
+    </div>
+
+    <!-- Bride name — Figma y=437, Astonia Regular ~40px -->
+    <p class="splash-bride splash-enter" style="--delay:0.65s">Aparna  M S</p>
+
+    <!-- Countdown timer — Figma y=526 -->
+    <div class="countdown splash-enter" id="countdown" style="--delay:0.8s">
+      <div class="count-unit">
+        <span class="count-label">Days</span>
+        <div class="count-box"><span id="cd-days">00</span></div>
+      </div>
+      <span class="count-sep">
+        <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="white" opacity="0.7"/></svg>
+      </span>
+      <div class="count-unit">
+        <span class="count-label">Hours</span>
+        <div class="count-box"><span id="cd-hours">00</span></div>
+      </div>
+      <span class="count-sep">
+        <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="white" opacity="0.7"/></svg>
+      </span>
+      <div class="count-unit">
+        <span class="count-label">Minutes</span>
+        <div class="count-box"><span id="cd-mins">00</span></div>
+      </div>
+      <span class="count-sep">
+        <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="white" opacity="0.7"/></svg>
+      </span>
+      <div class="count-unit">
+        <span class="count-label">Seconds</span>
+        <div class="count-box"><span id="cd-secs">00</span></div>
+      </div>
+    </div>
+
+    <!-- Date + venue — Figma y=646/666 -->
+    <div class="event-meta splash-enter" style="--delay:1s">
+      <p class="event-date">Sunday, 15 November 2026</p>
+      <p class="event-venue">MT Auditorium, Pothencode, Trivandrum</p>
+    </div>
+
+    <!-- Swipe CTA -->
+    <div class="swipe-wrap splash-enter" style="--delay:1.2s">
+      <div class="swipe-track" id="swipeTrack" role="button" aria-label="Swipe right to confirm attendance">
+        <div class="swipe-thumb" id="swipeThumb">
+          <i data-lucide="chevron-right" width="28" height="28" style="color:#780269"></i>
+        </div>
+        <span class="swipe-label" id="swipeLabel">Yeah, I am attending</span>
+        <div class="swipe-fill" id="swipeFill"></div>
+      </div>
+    </div>
+
+    <!-- Floating petals -->
+    <div class="petals" aria-hidden="true">
+      <span class="petal" style="--x:10%;--delay:0s;--dur:6s"></span>
+      <span class="petal" style="--x:25%;--delay:1.5s;--dur:7s"></span>
+      <span class="petal" style="--x:50%;--delay:0.8s;--dur:8s"></span>
+      <span class="petal" style="--x:70%;--delay:2s;--dur:5.5s"></span>
+      <span class="petal" style="--x:85%;--delay:0.3s;--dur:7.5s"></span>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PAGE 2 — DETAILS
+  ═══════════════════════════════════════ -->
+  <section id="details" class="page page-details" aria-hidden="true">
+
+    <!-- Hero top -->
+    <div class="details-hero">
+      <img src="assets/unni.jpg" alt="" aria-hidden="true" class="details-hero-bg" />
+      <div class="details-hero-overlay"></div>
+
+      <!-- Music pill -->
+      <button class="music-pill music-pill-details" id="musicPillDetails" aria-label="Toggle music">
+        <span class="music-pill-label">Sita Kalyanam</span>
+        <span class="music-pill-btn">
+          <i data-lucide="music-2" class="mp-icon icon-play" width="12" height="12"></i>
+          <i data-lucide="pause" class="mp-icon icon-pause" width="12" height="12"></i>
+        </span>
+      </button>
+
+      <!-- Groom name — Astonia Regular, centered -->
+      <div class="dh-groom">
+        <span>Unnikrishan p S</span>
+      </div>
+
+      <!-- "weds" badge — same style as splash -->
+      <div class="dh-weds-wrap">
+        <div class="dh-weds-bar"></div>
+        <span class="dh-weds">weds</span>
+      </div>
+
+      <!-- Bride name — Astonia Regular, centered -->
+      <p class="dh-bride">Aparna M S</p>
+
+      <!-- Sparkle divider -->
+      <div class="dh-divider-row">
+        <div class="dh-divider-line"></div>
+        <span class="dh-sparkle-star">✦</span>
+        <div class="dh-divider-line"></div>
+      </div>
+    </div>
+
+    <!-- Scrollable content card -->
+    <div class="details-sheet">
+
+      <!-- Save the date card -->
+      <div class="save-date-card">
+        <div class="sdt-ornament">
+          <div class="sdt-line"></div>
+          <span class="sdt-sparkle">✦</span>
+          <div class="sdt-line"></div>
+        </div>
+        <p class="sdt-eyebrow">Save the Date</p>
+        <p class="sdt-date">Sunday, 15 November 2026</p>
+        <p class="sdt-venue-hint">MT Auditorium, Pothencode, Trivandrum</p>
+        
+        <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NzBzbTRwOW5jb3EzaWJiNTY0cjZjYjlrNmdwajBiYjI2c3JqaWI5Zzc0cGplZTFvNjhyajRjMWg2NCB1bm5pa3Jpc2huYW5jaGl0aGFyYTA0QG0&amp;tmsrc=unnikrishnanchithara04%40gmail.com" target="_blank" class="sdt-cal-btn" rel="noopener">
+          <i data-lucide="calendar" width="15" height="15"></i>
+          Add to Calendar
+        </a>
+      </div>
+
+      <!-- ── Venue ── -->
+      <div class="card-section stagger-child">
+        <h2 class="section-heading">Venue</h2>
+        <div class="info-card venue-elegant">
+          <div class="venue-top">
+            <div class="venue-pin-circle">
+              <i data-lucide="map-pin" width="18" height="18"></i>
+            </div>
+            <div class="venue-text">
+              <h3 class="venue-name">MT Auditorium</h3>
+              <p class="venue-addr">Pothencode, Trivandrum</p>
+            </div>
+          </div>
+          <div class="venue-sep"></div>
+          <div class="venue-time">
+            <i data-lucide="clock" width="14" height="14" style="color:#516271"></i>
+            <span>11:55 AM – 12:40 PM · Sunday, 15 November 2026</span>
+          </div>
+          <a href="https://maps.app.goo.gl/bp2VMSS6wv1rEboE6" target="_blank" rel="noopener" class="directions-btn-full">
+            <i data-lucide="navigation" width="15" height="15"></i>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <!-- ── For Enquiry ── -->
+      <div class="card-section stagger-child">
+        <h2 class="section-heading">For Enquiry</h2>
+
+        <div class="info-card contact-full">
+          <div class="contact-meta">
+            <h3 class="contact-name">Unnikrishan</h3>
+            <p class="contact-role">Groom</p>
+            <a href="tel:+919961703730" class="contact-phone">+91 996 170 37 30</a>
+          </div>
+          <a href="tel:+919961703730" class="phone-btn primary" aria-label="Call Unnikrishan">
+            <i data-lucide="phone" width="20" height="20"></i>
+          </a>
+        </div>
+
+        <div class="contact-grid">
+          <div class="info-card contact-center">
+            <h3 class="contact-name">Purushothaman</h3>
+            <p class="contact-role">Groom's Father</p>
+            <a href="tel:+919495709424" class="contact-phone">+91 949 570 94 24</a>
+            <a href="tel:+919495709424" class="phone-btn outline" aria-label="Call Purushothaman">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </a>
+          </div>
+          <div class="info-card contact-center">
+            <h3 class="contact-name">Chintu</h3>
+            <p class="contact-role">Brother-in-law</p>
+            <a href="tel:+919061522792" class="contact-phone">+91 906 152 27 92"</a>
+            <a href="tel:+919061522792" class="phone-btn outline" aria-label="Call Chintu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── How to Reach ── -->
+      <div class="card-section stagger-child">
+        <h2 class="section-heading">How to Reach</h2>
+        <div class="transport-accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="transport-icon">
+                <i data-lucide="plane" width="20" height="20"></i>
+              </span>
+              <span class="transport-title">By Air</span>
+              <i data-lucide="chevron-down" class="accordion-chevron" width="18" height="18"></i>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-inner">
+                <ul class="transport-list">
+                  <li>Nearest airport: <span class="t-highlight">Thiruvanathapuram International Airport (CCJ)</span></li>
+                  <li>Distance: <span class="t-highlight">20.6 km · ~40 min drive</span></li>
+                  <li>Recommended: App-based taxi or local taxi</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="transport-icon">
+                <i data-lucide="train-front" width="20" height="20"></i>
+              </span>
+              <span class="transport-title">By Train</span>
+              <i data-lucide="chevron-down" class="accordion-chevron" width="18" height="18"></i>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-inner">
+                <ul class="transport-list">
+                  <li>Nearest station: <span class="t-highlight">Kazhakkutam Railway Station</span></li>
+                  <li>Distance: <span class="t-highlight">10.1 km · ~20 min drive</span></li>
+                  <li>Recommended: App-based taxi or local auto-rickshaw</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="transport-icon">
+                <i data-lucide="bus" width="20" height="20"></i>
+              </span>
+              <span class="transport-title">By Bus</span>
+              <i data-lucide="chevron-down" class="accordion-chevron" width="18" height="18"></i>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-inner">
+                <ul class="transport-list">
+                  <li>Nearest bus stand: <span class="t-highlight">Pothencode Bus Stand</span></li>
+                  <li>Distance: <span class="t-highlight">100 m · ~ 2 min walk</span></li>
+                  <li>Recommended: Walkable distance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Photo Gallery ── -->
+      <div class="card-section">
+        <h2 class="section-heading">Photo Gallery</h2>
+        <div class="info-card selfie-card">
+
+          <!-- Gradient header with animated face-scan rings -->
+          <div class="selfie-header">
+            <div class="selfie-scan-wrap">
+              <span class="kwik-ring kwik-ring-1"></span>
+              <span class="kwik-ring kwik-ring-2"></span>
+              <i data-lucide="scan-face" width="28" height="28" class="kwik-face-icon"></i>
+            </div>
+            <span class="selfie-coming-tag">Coming Soon</span>
+          </div>
+
+          <!-- Body -->
+          <div class="selfie-body">
+            <h3 class="selfie-headline">Your face,<br>your memories</h3>
+            <p class="selfie-sub">Take a quick selfie after the wedding and our smart gallery will find every photo you appear in — delivered straight to your phone, no searching needed.</p>
+
+            <button class="selfie-cta" disabled>
+              <i data-lucide="camera" width="17" height="17"></i>
+              Get My Photos
+            </button>
+
+            <p class="selfie-note">Link will be available a few days after the wedding</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Downloads ── -->
+      <!-- <div class="card-section stagger-child">
+        <h2 class="section-heading">Downloads</h2>
+        <div class="download-grid">
+          <div class="info-card download-card">
+            <div class="download-preview">
+              <img src="assets/wedding-card.png" alt="Wedding card preview" class="download-thumb" />
+            </div>
+            <p class="download-label">Wedding card</p>
+            <button class="download-btn">Download card</button>
+          </div>
+          <div class="info-card download-card">
+            <div class="download-preview">
+              <img src="https://www.figma.com/api/mcp/asset/763e9b6c-4fa6-4911-9538-055add002904" alt="Save the date video preview" class="download-thumb" />
+            </div>
+            <p class="download-label">Save the date video</p>
+            <button class="download-btn disabled" disabled>Coming soon...</button>
+          </div>
+        </div>
+      </div> -->
+
+      <footer class="wedding-footer">
+        <p>With love &amp; prayers</p>
+        <p class="footer-names">Unnikrishan &amp; Aparana</p>
+      </footer>
+
+    </div><!-- /details-sheet -->
+  </section>
+
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="audio/Sita-kalyanam.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="js/wedding.js"></script>
+</body>
+</html>
