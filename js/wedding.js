@@ -291,47 +291,101 @@ if (musicPillDet) musicPillDet.addEventListener('click', toggleMusic);
 /* ════════════════════════════════════════════
    DOWNLOAD CARD BUTTON
 ════════════════════════════════════════════ */
+
+const CARD_URL = 'assets/wedding-card.png';
+const FILENAME = 'Unnikrishnan-Aparna-WeddingCard.png';
+
+// DOWNLOAD - Android, iPhone and Desktop
 async function downloadWeddingCard(btn) {
-  const CARD_URL = 'assets/wedding-card.png';
-  const FILENAME = 'Mohammed-Henna-WeddingCard.png';
+    const origText = btn.innerHTML;
 
-  const origText = btn.textContent;
-  btn.textContent = 'Downloading…';
-  btn.disabled    = true;
+    btn.innerHTML = 'Downloading...';
+    btn.disabled = true;
 
-  try {
-    const res  = await fetch(CARD_URL);
-    if (!res.ok) throw new Error('Card image not found');
-    const blob = await res.blob();
-    const file = new File([blob], FILENAME, { type: blob.type || 'image/png' });
+    try {
+        const res = await fetch(CARD_URL);
 
-    // Mobile: native share sheet (WhatsApp status, etc.)
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        files: [file],
-        title: 'Mohammed & Henna — Wedding Card',
-        text:  'You\'re invited! ✨'
-      });
-    } else {
-      // Desktop / fallback: trigger download
-      const url = URL.createObjectURL(blob);
-      const a   = document.createElement('a');
-      a.href     = url;
-      a.download = FILENAME;
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 60000);
+        if (!res.ok) {
+            throw new Error('Card image not found');
+        }
+
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = FILENAME;
+
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+
+    } catch (error) {
+        console.error(error);
+        alert('Unable to download wedding card.');
+    } finally {
+        btn.innerHTML = origText;
+        btn.disabled = false;
     }
-  } catch {
-    // Silently fail — card image may not be uploaded yet
-  } finally {
-    btn.textContent = origText;
-    btn.disabled    = false;
-  }
 }
 
-document.querySelectorAll('.download-btn:not(.disabled)').forEach(btn => {
-  btn.addEventListener('click', () => downloadWeddingCard(btn));
-});
+// SHARE - Android / iPhone native share sheet
+async function shareWeddingCard(btn) {
+    const origText = btn.innerHTML;
+
+    btn.innerHTML = 'Preparing...';
+    btn.disabled = true;
+
+    try {
+        const res = await fetch(CARD_URL);
+
+        if (!res.ok) {
+            throw new Error('Card image not found');
+        }
+
+        const blob = await res.blob();
+
+        const file = new File([blob], FILENAME, {
+            type: blob.type || 'image/png'
+        });
+
+        if (
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({ files: [file] })
+        ) {
+            await navigator.share({
+                files: [file],
+                title: 'Unnikrishnan & Aparna — Wedding Card',
+                text: "You're invited! ✨"
+            });
+        } else {
+            alert('Sharing is not supported on this browser.');
+        }
+
+    } catch (error) {
+        if (error.name !== 'AbortError') {
+            console.error(error);
+        }
+    } finally {
+        btn.innerHTML = origText;
+        btn.disabled = false;
+    }
+}
+
+// BUTTON EVENTS
+document.querySelectorAll('.download-btn:not(.disabled)')
+    .forEach(btn => {
+        btn.addEventListener('click', () => downloadWeddingCard(btn));
+    });
+
+document.querySelectorAll('.share-btn:not(.disabled)')
+    .forEach(btn => {
+        btn.addEventListener('click', () => shareWeddingCard(btn));
+    });
+
 
 
 /* ════════════════════════════════════════════
